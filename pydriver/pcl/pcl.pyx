@@ -747,3 +747,9 @@ cdef class PCLHelper:
         validityMask = np.isnan(np.sum(shotFeatures['rf'], axis = (1, 2)))  # True for invalid values
 
         return shotFeatures, validityMask
+
+    cpdef saveScreenshot(PCLHelper self, filename):
+        pcl_helper.saveScreenshot(self.me, filename.encode('ascii'))
+
+    cpdef saveCameraParameters(PCLHelper self, filename):
+        pcl_helper.saveCameraParameters(self.me, filename.encode('ascii'))

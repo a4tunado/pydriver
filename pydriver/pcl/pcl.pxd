@@ -64,5 +64,7 @@ cdef class PCLHelper:
     cpdef tuple computeSHOT(PCLHelper self, FLOAT_t radius, PCLHelper keypoints)
     cpdef tuple computeSHOTColor(PCLHelper self, FLOAT_t radius, PCLHelper keypoints)
 
+    cpdef saveScreenshot(PCLHelper self, filename)
+    cpdef saveCameraParameters(PCLHelper self, filename)
     # C functions (cdef)
     # currently no declarations

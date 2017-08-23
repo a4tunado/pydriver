@@ -101,3 +101,9 @@ size_t computeSHOT(PCLHelperPtr h, PCLHelperPtr keypointHelper, FLOAT_t radius, 
 size_t computeSHOTColor(PCLHelperPtr h, PCLHelperPtr keypointHelper, FLOAT_t radius, SHOTColorFeature *out) {
 	return HELPER(h)->computeSHOTColor(HELPER(keypointHelper), radius, out);
 }
+void saveScreenshot(PCLHelperPtr h, char *filename) {
+	return HELPER(h)->saveScreenshot(filename);
+}
+void saveCameraParameters(PCLHelperPtr h, char *filename) {
+	return HELPER(h)->saveCameraParameters(filename);
+}

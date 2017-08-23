@@ -52,3 +52,6 @@ cdef extern from "pcl_helper_exports.h":
 
     size_t computeSHOT(CPCLHelperPtr h, CPCLHelperPtr keypointHelper, FLOAT_t radius, SHOTFeature *out)
     size_t computeSHOTColor(CPCLHelperPtr h, CPCLHelperPtr keypointHelper, FLOAT_t radius, SHOTColorFeature *out)
+
+    void saveScreenshot(CPCLHelperPtr h, char *filename)
+    void saveCameraParameters(CPCLHelperPtr h, char *filename)

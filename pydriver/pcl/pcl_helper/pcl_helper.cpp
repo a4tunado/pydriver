@@ -758,6 +758,20 @@ template <typename PointT> size_t PCLHelper<PointT>::computeSHOTColor(PCLHelper<
 }
 
 
+template <typename PointT> void PCLHelper<PointT>::saveScreenshot(char *filename)
+{
+	pcl::visualization::PCLVisualizer viewer = getVisualizer(filename, true, false, false);
+	viewer.saveScreenshot(filename);
+        viewer.close();
+}
+
+template <typename PointT> void PCLHelper<PointT>::saveCameraParameters(char *filename)
+{
+	pcl::visualization::PCLVisualizer viewer = getVisualizer(filename, true, false);
+	viewer.saveCameraParameters(filename);
+        viewer.close();
+}
+
 // ********** protected functions **********
 
 template <typename PointT> void PCLHelper<PointT>::initKdTree()
@@ -803,13 +817,14 @@ template <typename PointT> void PCLHelper<PointT>::setCloud(typename pcl::PointC
 	pCloudNormals.reset();
 }
 
-template <typename PointT> pcl::visualization::PCLVisualizer PCLHelper<PointT>::getVisualizer(const std::string &title, bool addCloud, bool fullscreen)
+template <typename PointT> pcl::visualization::PCLVisualizer PCLHelper<PointT>::getVisualizer(const std::string &title, bool addCloud, bool fullscreen, bool addCoordinateSystem)
 {
 	pcl::visualization::PCLVisualizer viewer(title);
 	viewer.setBackgroundColor(bgR, bgG, bgB);
-	viewer.addCoordinateSystem();
+        if (addCoordinateSystem)
+		viewer.addCoordinateSystem();
+
 	viewer.initCameraParameters();
-	viewer.setCameraPosition(camPosX, camPosY, camPosZ, camViewX, camViewY, camViewZ, camUpX, camUpY, camUpZ);
 	if (fullscreen)
 	{
 		viewer.setFullScreen(true);
@@ -818,6 +833,8 @@ template <typename PointT> pcl::visualization::PCLVisualizer PCLHelper<PointT>::
 
 	if (addCloud)
 		addCloudToVisualizer(viewer, pCloud);
+
+	viewer.setCameraPosition(camPosX, camPosY, camPosZ, camViewX, camViewY, camViewZ, camUpX, camUpY, camUpZ);
 
 	return(viewer);
 }

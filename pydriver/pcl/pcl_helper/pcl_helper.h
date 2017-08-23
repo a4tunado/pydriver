@@ -51,6 +51,9 @@ template <typename PointT> class PCLHelper
 
 		size_t computeSHOT(PCLHelper<PointT> *keypointHelper, FLOAT_t radius, SHOTFeature *out);
 		size_t computeSHOTColor(PCLHelper<PointT> *keypointHelper, FLOAT_t radius, SHOTColorFeature *out);
+
+		void saveScreenshot(char *filename);
+		void saveCameraParameters(char *filename);
 	protected:
 		// internal PCL objects
 		typename pcl::PointCloud<PointT>::Ptr pCloud;
@@ -76,7 +79,7 @@ template <typename PointT> class PCLHelper
 		// use this function instead of manipulating pCloud directly
 		void setCloud(typename pcl::PointCloud<PointT>::Ptr newCloud);
 
-		pcl::visualization::PCLVisualizer getVisualizer(const std::string &title, bool addCloud = true, bool fullscreen = false);
+		pcl::visualization::PCLVisualizer getVisualizer(const std::string &title, bool addCloud = true, bool fullscreen = false, bool addCoordinateSystem = true);
 		void addCloudToVisualizer(pcl::visualization::PCLVisualizer &viewer, typename pcl::PointCloud<PointT>::Ptr pCloudToAdd);
 		void showVisualizer(pcl::visualization::PCLVisualizer &viewer);
 

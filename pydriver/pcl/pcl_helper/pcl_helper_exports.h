@@ -78,6 +78,8 @@ extern "C" {
 
 	PCL_HELPER_API size_t		computeSHOT(PCLHelperPtr h, PCLHelperPtr keypointHelper, FLOAT_t radius, SHOTFeature *out);
 	PCL_HELPER_API size_t		computeSHOTColor(PCLHelperPtr h, PCLHelperPtr keypointHelper, FLOAT_t radius, SHOTColorFeature *out);
+	PCL_HELPER_API void                     saveScreenshot(PCLHelperPtr h, char *filename);
+	PCL_HELPER_API void                     saveCameraParameters(PCLHelperPtr h, char *filename);
 }
 
 
